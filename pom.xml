@@ -18,21 +18,26 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.7.1</version>
+            <version>5.9.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.1</version>
+            <version>5.9.1</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <version>5.7.1</version>
+            <version>5.9.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.9.1</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -86,21 +91,43 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.8.0</version>
+            <version>7.5.0</version>
+            <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>
-            <version>7.8.0</version>
+            <version>7.5.0</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>7.8.0</version>
+            <version>7.5.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>7.5.0</version>
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-api -->
+        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>1.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-console</artifactId>
+            <version>1.9.1</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -112,9 +139,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <parallel>all</parallel>
-                    <threadCount>5</threadCount>
-                    <redirectTestOutputToFile>false</redirectTestOutputToFile>
+                    <properties>
+                        <configurationParameters>
+                            cucumber.junit-platform.naming-strategy=long
+                        </configurationParameters>
+                    </properties>
                 </configuration>
             </plugin>
             <plugin>
@@ -125,6 +154,36 @@
                     <source>17</source>
                     <target>17</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <!--Work around. Surefire does not use JUnit's Test Engine discovery functionality -->
+                        <id>CLI-test</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+<!--                        <configuration>-->
+<!--                            <target>-->
+<!--                                <echo message="Running JUnit Platform CLI"/>-->
+<!--                                <java classname="org.junit.platform.console.ConsoleLauncher"-->
+<!--                                      fork="true"-->
+<!--                                      failonerror="true"-->
+<!--                                      newenvironment="true"-->
+<!--                                      maxmemory="512m"-->
+<!--                                      classpathref="maven.test.classpath">-->
+<!--                                    <arg value="&#45;&#45;include-engine"/>-->
+<!--                                    <arg value="cucumber"/>-->
+<!--                                    <arg value="&#45;&#45;scan-classpath"/>-->
+<!--                                    <arg value="${project.build.testOutputDirectory}"/>-->
+<!--                                </java>-->
+<!--                            </target>-->
+<!--                        </configuration>-->
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
