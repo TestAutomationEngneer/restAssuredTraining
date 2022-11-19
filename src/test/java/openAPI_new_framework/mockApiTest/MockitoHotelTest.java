@@ -4,7 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import openAPI_new_framework.data.factories.DataSource;
 import openAPI_new_framework.data.models.Repository;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
@@ -15,6 +17,8 @@ import static org.mockito.Mockito.when;
 
 @Slf4j
 public class MockitoHotelTest {
+
+
 
     @Test
     public void shouldGetAvailableRoomsFromDB() {
@@ -35,7 +39,7 @@ public class MockitoHotelTest {
         Repository repository = new Repository(dataSource);
         List<Integer> actualRooms = repository.findAll();
         log.info("Size = " + repository.findAll().size());
-        assertThat(repository.findAll().size()).isGreaterThan(0);
+        assertThat(repository.findAll().size()).isGreaterThan(0); //fail
     }
 
     @Test
@@ -60,4 +64,6 @@ public class MockitoHotelTest {
         log.info("Size = " + repository.findAll().size());
         assertThat(repository.findAll().size()).isGreaterThan(0);
     }
+
+
 }
