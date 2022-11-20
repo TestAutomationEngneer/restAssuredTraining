@@ -1,0 +1,25 @@
+{
+  "data": {
+    "archived": false,
+    "color": "light-green",
+    "current_status": {
+      "author": {
+        "name": "${author}"
+      },
+      "color": "green",
+      "created_by": {
+        "name": "${author}"
+      },
+      "html_text": "<body>The project <strong>is</strong> moving forward according to plan...</body>",
+      "text": "The project is moving forward according to plan...",
+      "title": "Status Update - Jun 15"
+    },
+    "default_view": "calendar",
+    "due_date": "2022-09-15",
+    "due_on": "2022-09-15",
+    "html_notes": "<body>These are things we need to purchase.</body>",
+    "name": "${project_name}",
+    "notes": "These are things we need to purchase",
+    "public": true
+  }
+}
