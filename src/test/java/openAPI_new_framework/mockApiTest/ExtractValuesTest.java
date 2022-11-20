@@ -1,10 +1,13 @@
 package openAPI_new_framework.mockApiTest;
 
 import io.restassured.RestAssured;
+import io.restassured.common.mapper.TypeRef;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import openAPI_new_framework.data.DataStore;
+import openAPI_new_framework.data.models.Student;
+import openAPI_new_framework.data.models.StudentResponse;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
@@ -25,7 +28,7 @@ public class ExtractValuesTest {
         RequestSpecification specification = given()
                 .header("name", "Darek")
                 .header("age", "25")
-                .param("q","London,uk")
+                .param("q", "London,uk")
                 .param("appid", "b1b15e88fa797225412429c1c50c122a1")
                 .log()
                 .all();
@@ -41,10 +44,30 @@ public class ExtractValuesTest {
                 .extract()
                 .jsonPath().get("wind.deg");
 
-        System.out.println(">>>>>>>>>>>> extracted value is: "+ DataStore.WIND_DEG + ">>>>>>>>>>>");
-
-
+        System.out.println(">>>>>>>>>>>> extracted value is: " + DataStore.WIND_DEG + ">>>>>>>>>>>");
     }
+//------------ .extract() do TypeRef --------------------
+
+            //GET
+            @Test
+            public void shouldGETNewStudentandExtractAsTypeRef() {
+                StudentResponse actualStudent = given()
+                        .baseUri("https://thetestingworldapi.com/")
+                        .basePath("api/studentsDetails")
+                        .pathParam("studentid", "3937430")
+                        .contentType(ContentType.JSON)
+                        .log().all()
+                        .when()
+                        .get("/{studentid}")
+                        .then()
+                        .statusCode(200)
+                        .log()
+                        .all()
+                        .extract()
+                        .as(new TypeRef<StudentResponse>(){});
+
+                System.out.println("Student as TypeRef = " +actualStudent);
+            }
     //------------ .response body validation--------------------
     @Test
     public void getweatherforLondonbodyValidation() {

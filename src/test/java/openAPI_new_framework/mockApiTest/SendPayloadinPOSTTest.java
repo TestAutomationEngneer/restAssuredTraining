@@ -32,27 +32,13 @@ public class SendPayloadinPOSTTest {
     //Student object
     Student studentObj;
 
-    //get, poznanie API
-    @Test
-    public void getweatherforLondon() {
-        given()
-                .log()
-                .all()
-                .when()
-                .get("https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=2b1fd2d7f77ccf1b7de9b441571b39b8")
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-
-    }
 
     //wypełnianie request body POST Student - simple local String
 
     @Test
     public void createNewStudentSimpleString() {
 
-        int id = RestAssured.given()
+        RestAssured.given()
                 .baseUri("https://thetestingworldapi.com/")
                 .basePath("api/studentsDetails")
                 .contentType(ContentType.JSON)
@@ -63,9 +49,8 @@ public class SendPayloadinPOSTTest {
                 .then()
                 .statusCode(201)
                 .log()
-                .all()
-                .extract()
-                .path("id");
+                .all();
+
     }
 
     //wypełnianie request body POST Student - Map
@@ -78,7 +63,7 @@ public class SendPayloadinPOSTTest {
         studentMap.put("last_name", "Pitt");
         studentMap.put("date_of_birth", "01/03/1977");
 
-        int id = RestAssured.given()
+        RestAssured.given()
                 .baseUri("https://thetestingworldapi.com/")
                 .basePath("api/studentsDetails")
                 .contentType(ContentType.JSON)
@@ -90,9 +75,8 @@ public class SendPayloadinPOSTTest {
                 .then()
                 .statusCode(201)
                 .log()
-                .all()
-                .extract()
-                .path("id");
+                .all();
+
     }
 
     //wypełnianie request body POST Student - Object
@@ -102,7 +86,7 @@ public class SendPayloadinPOSTTest {
 
         studentObj= new Student("Salma", "Joanna", "Hayek", "01/03/1977");
 
-        int id = RestAssured.given()
+        RestAssured.given()
                 .baseUri("https://thetestingworldapi.com/")
                 .basePath("api/studentsDetails")
                 .contentType(ContentType.JSON)
@@ -114,9 +98,8 @@ public class SendPayloadinPOSTTest {
                 .then()
                 .statusCode(201)
                 .log()
-                .all()
-                .extract()
-                .path("id");
+                .all();
+
     }
 
     //wypełnianie request body POST Student - File
@@ -125,7 +108,7 @@ public class SendPayloadinPOSTTest {
     public void createNewStudentFile() {
 
 
-        int id = RestAssured.given()
+        RestAssured.given()
                 .baseUri("https://thetestingworldapi.com/")
                 .basePath("api/studentsDetails")
                 .contentType(ContentType.JSON)
@@ -137,8 +120,7 @@ public class SendPayloadinPOSTTest {
                 .then()
                 .statusCode(201)
                 .log()
-                .all()
-                .extract()
-                .path("id");
+                .all();
+
     }
 }

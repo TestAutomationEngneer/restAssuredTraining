@@ -35,7 +35,7 @@ public class StudentDetailsTest {
 
     //POST
     @Test
-    public void shouldGETNewStudent() {
+    public void shouldPOSTNewStudent() {
         RestAssured.given()
                 .baseUri("https://thetestingworldapi.com/")
                 .basePath("api/studentsDetails")
@@ -52,7 +52,7 @@ public class StudentDetailsTest {
 
     //GET
     @Test
-    public void shouldCreateNewStudentSimpleString() {
+    public void shouldGETNewStudentSimpleString() {
         RestAssured.given()
                 .baseUri("https://thetestingworldapi.com/")
                 .basePath("api/studentsDetails")

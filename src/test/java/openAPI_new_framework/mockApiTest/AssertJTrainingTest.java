@@ -24,19 +24,19 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AssertJTrainingTest extends MockTestBase {
-    private ApiClient api;
-    private String studentName;
+//    private ApiClient api;
+//    private String studentName;
+//
+//    private StudentFactory studentFactory;
+//    private final String STUDENT_PATH = "/studentDetails/.*";
 
-    private StudentFactory studentFactory;
-    private final String STUDENT_PATH = "/studentDetails/.*";
-
-    @BeforeEach()
-    public void createApiClient() {
-        studentFactory = new StudentFactory();
-        api = createApiClient(mock.baseUrl());
-        studentName = RandomStringUtils.random(8, true, false).toLowerCase();
-
-    }
+//    @BeforeEach()
+//    public void createApiClient() {
+//        studentFactory = new StudentFactory();
+//        api = createApiClient(mock.baseUrl());
+//        studentName = RandomStringUtils.random(8, true, false).toLowerCase();
+//
+//    }
 // - AssertJ surowy kod bez endpointów
     @Test
     public void differentAssertionTest() {
@@ -46,13 +46,13 @@ public class AssertJTrainingTest extends MockTestBase {
 //        int b = 44;
 //        assertThat(a).isEqualTo(44);
 
-        //2. Porównanie list
+//        //2. Porównanie list
         List<Integer> totolotekWczoraj = List.of(3, 4, 6, 7, 33, 43, 44);
         List<Integer> totolotekDzisiaj = List.of(3, 4, 6, 7, 33, 43, 44);
 
-//       assertThat(totolotekWczoraj).usingRecursiveComparison().isEqualTo(totolotekDzisiaj); //pass
+   //    assertThat(totolotekWczoraj).usingRecursiveComparison().isEqualTo(totolotekDzisiaj); //pass
 //        assertThat(totolotekWczoraj).contains(7); //pass
-//        assertThat(totolotekWczoraj).containsExactlyInAnyOrder(44, 7, 33, 3, 4, 6, 43); //fail
+//        assertThat(totolotekWczoraj).containsExactlyInAnyOrder(44, 7, 33, 13, 4, 6, 43); //fail
 
 
 

@@ -2,10 +2,14 @@ package openAPI_new_framework.data.models;
 
 public class Student {
 
+
     private String first_name;
     private String middle_name;
     private String last_name;
     private String date_of_birth;
+
+    public Student() {
+    }
 
     public Student(String first_name, String middle_name, String last_name, String date_of_birth) {
 
@@ -15,7 +19,18 @@ public class Student {
         this.date_of_birth = date_of_birth;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Student{" +
+                "first_name='" + first_name + '\'' +
+                ", middle_name='" + middle_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", date_of_birth='" + date_of_birth + '\'' +
+                '}';
+    }
+
+
+
     public String getFirst_name() {
         return first_name;
     }
