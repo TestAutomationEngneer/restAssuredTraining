@@ -14,9 +14,13 @@ public class BasicRestAssuredTest {
 
     @BeforeEach
     public void setUp() {
+
+        RestAssured.useRelaxedHTTPSValidation();
 //        RestAssured.baseURI = "https://api.openweathermap.org";
 //        RestAssured.basePath = "/data/2.5/weather";
-        //RestAssured.port = 8811;
+//
+//        //start serwer
+//        RestAssured.port = 8811;
     }
 
     @Test
@@ -174,34 +178,33 @@ public class BasicRestAssuredTest {
         //
     }
    // Logowanie na podstawie cookie
+    private Cookies cookie;
 
-//    private Cookies cookie;
-//
-//    //@Before
-//    public void shouldLoginToTheSystem() {
-//        String body = "body of my payload";
-//        cookie = RestAssured.given()
-//                .param("id", "22")
-//                .when()
-//                .body(body)
-//                .post("/api/santander")
-//                .then()
-//                .statusCode(200)
-//                .extract()
-//                .response()
-//                .getDetailedCookies();
-//    }
-//
-//    @Test
-//    public void performActionsBasedOnCookies() {
-////ustaw cookie przed wysłaniem metody POST
-//        RestAssured.given()
-//                .cookies(cookie)
-//                .when()
-//                .post("/api/santander/loan")
-//                .then()
-//                .statusCode(201);
-//    }
+    //@Before
+    public void shouldLoginToTheSystem() {
+        String body = "body of my payload";
+        cookie = RestAssured.given()
+                .param("id", "22")
+                .when()
+                .body(body)
+                .post("/api/santander")
+                .then()
+                .statusCode(200)
+                .extract()
+                .response()
+                .getDetailedCookies();
+    }
+
+    @Test
+    public void performActionsBasedOnCookies() {
+//ustaw cookie przed wysłaniem metody POST
+        RestAssured.given()
+                .cookies(cookie)
+                .when()
+                .post("/api/santander/loan")
+                .then()
+                .statusCode(201);
+    }
 
     // <<<<<<<<<<<< Response
 

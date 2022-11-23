@@ -22,7 +22,7 @@ public class RequestResponseSpecificationTest {
     //---------------------RequestSpecification specification param ------------
 
     @Test
-    public void getweatherforLondonReqSpecification() {
+    public void shouldGETweatherforLondonReqSpecification() {
 
         RequestSpecification specification = given()
                 .param("q","London,uk")
