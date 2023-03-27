@@ -1,0 +1,10 @@
+{
+  "port": null,
+  "baseURI": "http://www.thetestingworldapi.com/api",
+  "basePath": "/studentsDetails",
+  "statusCode": 200,
+
+  "astanabaseURI": "https://app.asana.com/api",
+  "astanabasePath": "/1.0",
+  "token": "1/1201005098954414:03e2de94b6261454e1e50271d6a46d38"
+}
