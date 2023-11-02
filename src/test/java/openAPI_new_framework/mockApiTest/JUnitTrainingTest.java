@@ -32,7 +32,7 @@ public class JUnitTrainingTest {
 
     @RegressionTest
     @DisplayName("My own annotation")
-    @ValueSource(strings = {"Darek", "Jarek", "Marek"})
+    @ValueSource(strings = {"Darek", "Jarek", "Marek", "Wikto"})
     @Tag("names")
     void checkIfNameHas5Length(String name) {
         assertThat(name).hasSize(5);
