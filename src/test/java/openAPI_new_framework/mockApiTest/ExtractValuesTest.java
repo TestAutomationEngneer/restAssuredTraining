@@ -54,7 +54,7 @@ public class ExtractValuesTest {
                 StudentResponse actualStudent = given()
                         .baseUri("https://thetestingworldapi.com/")
                         .basePath("api/studentsDetails")
-                        .pathParam("studentid", "3937430")
+                        .pathParam("studentid", "8529230")
                         .contentType(ContentType.JSON)
                         .log().all()
                         .when()

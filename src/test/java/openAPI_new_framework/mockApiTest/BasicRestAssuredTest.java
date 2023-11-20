@@ -16,11 +16,11 @@ public class BasicRestAssuredTest {
     public void setUp() {
 
         RestAssured.useRelaxedHTTPSValidation();
-//        RestAssured.baseURI = "https://api.openweathermap.org";
-//        RestAssured.basePath = "/data/2.5/weather";
+        RestAssured.baseURI = "https://api.openweathermap.org";
+      //  RestAssured.basePath = "/data/2.5/weather";
 //
 //        //start serwer
-//        RestAssured.port = 8811;
+        RestAssured.port = 8811;
     }
 
     @Test
@@ -99,7 +99,6 @@ public class BasicRestAssuredTest {
                 .baseUri("https://api.openweathermap.org")
                 .param("appid","89a2ed8a594cc497a6273490e7ca59dd")
                 .param("id","6695624")
-                .log().all()
                 .when()
                 .get("/data/2.5/forecast")
                 .then()
@@ -127,7 +126,7 @@ public class BasicRestAssuredTest {
 //        given()
 //          .auth().oauth2(token)
 
-        //given().headers("User-Agent", "MyAppName", "Accept-Charset", "utf-8")
+        given().headers("User-Agent", "MyAppName", "Accept-Charset", "utf-8");
     }
     @Test
     public void shouldGETweatherForLocationWithPathParam1() {
@@ -187,7 +186,7 @@ public class BasicRestAssuredTest {
                 .param("id", "22")
                 .when()
                 .body(body)
-                .post("/api/santander")
+                .post("/api/google")
                 .then()
                 .statusCode(200)
                 .extract()
@@ -201,7 +200,7 @@ public class BasicRestAssuredTest {
         RestAssured.given()
                 .cookies(cookie)
                 .when()
-                .post("/api/santander/loan")
+                .post("/api/bank/loan")
                 .then()
                 .statusCode(201);
     }
