@@ -21,7 +21,6 @@ public class RequestBuilder extends BaseTest {
                 .all()
                 .when()
                 .get("/workspaces");
-        logger.info(">>>GET response:  "+ response.body().prettyPrint());
         return response;
     }
 
@@ -33,7 +32,6 @@ public class RequestBuilder extends BaseTest {
                 .all()
                 .when()
                 .get("/projects");
-        logger.info(">>>GET response:  "+ response.body().prettyPrint());
         return response;
     }
 
@@ -47,8 +45,6 @@ public class RequestBuilder extends BaseTest {
                 .when()
                 .post("workspaces/"+context.getProperty("workspaceID", String.class)+ "/projects");
 
-
-        logger.info(">>>POST response:  "+ response.body().prettyPrint());
         return response;
     }
 
@@ -62,7 +58,6 @@ public class RequestBuilder extends BaseTest {
                 .when()
                 .post("workspaces/"+context.getProperty("workspaceID", String.class)+ "/projects");
 
-        logger.info(">>>POST response:  "+ response.body().prettyPrint());
         return response;
     }
     public Response sendDELETEAstanaRequest_Projects(String token) {

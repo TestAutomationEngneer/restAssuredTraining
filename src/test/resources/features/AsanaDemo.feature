@@ -10,7 +10,7 @@ Feature: Testing New Asana project Demo
 
     Examples:
       | Params                                                           |
-      | gid=1203406146981980,name=Selenium project,resource_type=project |
+      | gid=1206359904045763,name=Selenium project,resource_type=project |
 
     #  project details from example, interpolation
   @asana
@@ -22,7 +22,7 @@ Feature: Testing New Asana project Demo
 
     Examples:
       | Params                                                           |
-      | gid=1203406146981980,name=Selenium project,resource_type=project |
+      | gid=1206359904045763,name=Selenium project,resource_type=project |
 
   @asana
   Scenario Outline: Create a new project
