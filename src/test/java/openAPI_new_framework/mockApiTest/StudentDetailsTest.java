@@ -56,7 +56,7 @@ public class StudentDetailsTest {
         RestAssured.given()
                 .baseUri("https://thetestingworldapi.com/")
                 .basePath("api/studentsDetails")
-                .pathParam("studentid", "3937429")
+                .pathParam("studentid", "10090572")
                 .contentType(ContentType.JSON)
                 .log().all()
                 .when()

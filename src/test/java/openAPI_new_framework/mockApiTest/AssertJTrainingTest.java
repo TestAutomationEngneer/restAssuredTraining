@@ -1,18 +1,11 @@
 package openAPI_new_framework.mockApiTest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import io.restassured.http.ContentType;
-import openAPI_new_framework.baseTest.MockTestBase;
-import openAPI_new_framework.client.ApiClient;
-import openAPI_new_framework.data.factories.StudentFactory;
+import openAPI_new_framework.baseTest.NewFrameworkTestBase;
 import openAPI_new_framework.data.models.Car;
 import openAPI_new_framework.data.models.Employee;
-import openAPI_new_framework.data.models.StudentDTO;
 import openAPI_new_framework.data.models.Transaction;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.http.HttpStatus;
 import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -20,10 +13,9 @@ import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AssertJTrainingTest extends MockTestBase {
+public class AssertJTrainingTest extends NewFrameworkTestBase {
 //    private ApiClient api;
 //    private String studentName;
 //

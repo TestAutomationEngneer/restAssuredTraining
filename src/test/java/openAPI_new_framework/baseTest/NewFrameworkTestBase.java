@@ -14,7 +14,7 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMoc
 import static io.restassured.config.ObjectMapperConfig.objectMapperConfig;
 import static io.restassured.config.RestAssuredConfig.config;
 
-public class MockTestBase {
+public class NewFrameworkTestBase {
     @RegisterExtension
     protected static WireMockExtension mock = WireMockExtension.newInstance()
             .options(wireMockConfig().dynamicPort())
